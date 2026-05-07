@@ -1,40 +1,34 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, FlatList, Image } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Image, ImageBackground } from 'react-native';
+import { useEffect, useState } from 'react';
+
+import { criarTabela, inserirDadosIniciais, buscarDados } from './Banco';
 
 export default function App() {
 
-  const dados = [
-    {
-      id: '1',
-      titulo: 'Cariacica',
-      descricao: 'Clima: Ensolarado',
-      imagem: require('./assets/icon2.0.png'),
-    },
-    {
-      id: '2',
-      titulo: 'Vila Velha',
-      descricao: 'Clima: Chuvoso',
-      imagem: require('./assets/icon2.0.png'),
-    },
-    {
-      id: '3',
-      titulo: 'Vitória',
-      descricao: 'Clima: Chuvoso',
-      imagem: require('./assets/icon2.0.png'),
-    },
-    {
-      id: '4',
-      titulo: 'Viana',
-      descricao: 'Clima: Ensolarado',
-      imagem: require('./assets/icon2.0.png'),
-    }
-  ];
+  const [dados, setDados] = useState([]);
+
+  
+  const imagens = {
+    ensolarado: require('./assets/Ensolarado.jpg'),
+    chuva: require('./assets/chuva gelada.jpg'),
+  };
+
+  useEffect(() => {
+  criarTabela();
+  inserirDadosIniciais();
+
+  const dadosAtualizados = buscarDados();
+
+  setDados(dadosAtualizados);
+
+}, []);
 
   const renderItem = ({ item }) => (
     <View style={styles.card}>
 
       <Image
-        source={item.imagem}
+        source={imagens[item.imagem]}
         style={styles.imagem}
       />
 
@@ -49,19 +43,26 @@ export default function App() {
   return (
     <View style={styles.container}>
 
-      <View style={styles.tituloPrincipal}>
+      <ImageBackground
+        source={require('./assets/céu.jpg')}
+        style={{ flex: 1 }}
+        resizeMode="cover"
+      >
+      <View style={{ flex: 1, padding: 10}}></View>
 
-        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
-          App Previsão do Tempo
+      <View style={styles.tituloPrincipal}>
+        <Text style={{ color: '#ffffff', marginTop: -260, fontSize: 24, fontWeight: 'bold' }}>
+         ☀️ Blue | Sky 🌧️
         </Text>
       </View>
 
-
-      <FlatList
+      <FlatList style={{ color: '#ffffff', marginTop: -260, fontSize: 20, fontWeight: 'bold' }}
         data={dados}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={renderItem}
       />
+      </ImageBackground>
+
       <StatusBar style="auto" />
     </View>
   );
@@ -70,13 +71,13 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#eee',
-    padding: 10,
+    backgroundColor: 'transparent',
+    padding: 0,
   },
 
   card: {
     flexDirection: 'row',
-    backgroundColor: '#ddd',
+    backgroundColor: 'transparent',
     padding: 12,
     marginBottom: 12,
     borderRadius: 8,
@@ -97,19 +98,19 @@ const styles = StyleSheet.create({
 
   tituloPrincipal: {
     alignItems: 'center',
-    fontWeight: 'bold',
-    fontSize: 20,
     marginTop: 50,
     marginBottom: 50,
   },
 
   titulo: {
+    color: '#ffffff',
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 20,
     marginBottom: 4,
   },
 
   descricao: {
-    color: '#555',
+    fontWeight: 'bold',
+    color: '#ffffff',
   },
 });
