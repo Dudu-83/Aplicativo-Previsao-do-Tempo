@@ -51,12 +51,12 @@ export default function App() {
       <View style={{ flex: 1, padding: 10}}></View>
 
       <View style={styles.tituloPrincipal}>
-        <Text style={{ color: '#ffffff', marginTop: -260, fontSize: 24, fontWeight: 'bold' }}>
-         ☀️ Blue | Sky 🌧️
+        <Text style={{ color: '#000000', marginTop: -60, fontSize: 24, fontWeight: 'bold' }}>
+         ☀️ Sun | Rain 🌧️
         </Text>
       </View>
 
-      <FlatList style={{ color: '#ffffff', marginTop: -260, fontSize: 20, fontWeight: 'bold' }}
+      <FlatList style={{ color: '#ffffff', marginTop: -50, fontSize: 20, fontWeight: 'bold' }}
         data={dados}
         keyExtractor={(item) => item.id.toString()}
         renderItem={renderItem}
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   },
 
   titulo: {
-    color: '#ffffff',
+    color: '#ffbb00',
     fontWeight: 'bold',
     fontSize: 20,
     marginBottom: 4,
@@ -111,6 +111,6 @@ const styles = StyleSheet.create({
 
   descricao: {
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#000000',
   },
 });

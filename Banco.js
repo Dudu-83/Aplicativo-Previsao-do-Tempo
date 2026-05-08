@@ -26,17 +26,32 @@ export function inserirDadosIniciais() {
     },
     {
       titulo: 'Vila Velha',
-      descricao: 'Clima: Chuvoso - 24° graus',
+      descricao: 'Clima: Chuvoso - 17° graus',
       imagem: 'chuva',
     },
     {
       titulo: 'Vitória',
-      descricao: 'Clima: Chuvoso - 24° graus',
+      descricao: 'Clima: Chuvoso - 20° graus',
       imagem: 'chuva',
     },
     {
       titulo: 'Viana',
       descricao: 'Clima: Ensolarado - 30° graus',
+      imagem: 'ensolarado',
+    },
+    {
+      titulo: 'Domingo Martins',
+      descricao: 'Clima: Ensolarado - 28° graus',
+      imagem: 'ensolarado',
+    },
+    {
+      titulo: 'Guarapari',
+      descricao: 'Clima: Chuvoso - 29° graus',
+      imagem: 'chuva',
+    },
+    {
+      titulo: 'Venda Nova do Imigrante',
+      descricao: 'Clima: Ensolarado - 25° graus',
       imagem: 'ensolarado',
     }
   ];
